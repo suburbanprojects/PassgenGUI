@@ -31,10 +31,8 @@ def PassGen():
     password = ""
     for char in combined_pass:
         password += char
+        PassBox.delete(0, "end")
     PassBox.insert(tk.INSERT, password)
-
-def ClearText():
-   PassBox.delete(0, "end")
 
 def CopyPass():
     pyperclip.copy(PassBox.get())
@@ -59,11 +57,9 @@ PassBox.grid(column=1,row=3,padx=10,pady=5, sticky=tk.N)
 
 resultButton = tk.Button(app, text='Generate Password', command=PassGen)
 resultButton.grid(column=0, row=4, pady=10, sticky=tk.W)
-resultButton = tk.Button(app, text='Clear Result', command=ClearText)
-resultButton.grid(column=1, row=4, pady=10, sticky=tk.W)
 resultCopy = tk.Button(app, text='Copy', command=CopyPass)
-resultCopy.grid(column=2, row=4, pady=10, sticky=tk.W)
+resultCopy.grid(column=1, row=4, pady=10, sticky=tk.W)
 resultQuit = tk.Button(app, text='Quit', command=app.quit)
-resultQuit.grid(column=3, row=4, pady=10, sticky=tk.W)
+resultQuit.grid(column=2, row=4, pady=10, sticky=tk.W)
 
 app.mainloop()
