@@ -1,5 +1,6 @@
 import tkinter as tk
 import random, string
+import pyperclip
 
 app = tk.Tk()
 app.title("Password Generator")
@@ -35,6 +36,9 @@ def PassGen():
 def ClearText():
    PassBox.delete(0, "end")
 
+def CopyPass():
+    pyperclip.copy(PassBox.get())
+
 LetterCount = tk.Label(app, text="Number of letters: ")
 LetterCount.grid(column = 0, row = 0, ipadx=5, pady=5, sticky=tk.W+tk.N)
 NumberCount = tk.Label(app, text="Number of digits: ")
@@ -44,21 +48,22 @@ SymbolCount.grid(column = 0, row = 2, ipadx=5, pady=5, sticky=tk.W+tk.N)
 PassResult = tk.Label(app, text="The password: ")
 PassResult.grid(column = 0, row = 3, ipadx=5, pady=5, sticky=tk.W+tk.N)
 
-LetterBox = tk.Entry(app, width=20)
+LetterBox = tk.Entry(app, width=35)
 LetterBox.grid(column=1,row=0,padx=10,pady=5, sticky=tk.N)
-NumberBox = tk.Entry(app, width=20)
+NumberBox = tk.Entry(app, width=35)
 NumberBox.grid(column=1,row=1,padx=10,pady=5, sticky=tk.N)
-SymbolBox = tk.Entry(app, width=20)
+SymbolBox = tk.Entry(app, width=35)
 SymbolBox.grid(column=1,row=2,padx=10,pady=5, sticky=tk.N)
-PassBox = tk.Entry(app, width=20)
+PassBox = tk.Entry(app, width=35)
 PassBox.grid(column=1,row=3,padx=10,pady=5, sticky=tk.N)
 
 resultButton = tk.Button(app, text='Generate Password', command=PassGen)
 resultButton.grid(column=0, row=4, pady=10, sticky=tk.W)
 resultButton = tk.Button(app, text='Clear Result', command=ClearText)
 resultButton.grid(column=1, row=4, pady=10, sticky=tk.W)
+resultCopy = tk.Button(app, text='Copy', command=CopyPass)
+resultCopy.grid(column=2, row=4, pady=10, sticky=tk.W)
 resultQuit = tk.Button(app, text='Quit', command=app.quit)
-resultQuit.grid(column=2, row=4, pady=10, sticky=tk.W)
+resultQuit.grid(column=3, row=4, pady=10, sticky=tk.W)
 
 app.mainloop()
-
